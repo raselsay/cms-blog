@@ -14,8 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('test');
+    return view('welcome');
 });
+
+Route::get('/create/project',function(){
+    return view('test');
+})->middleware(['auth']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

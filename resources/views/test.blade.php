@@ -1,20 +1,10 @@
 <x-guest-layout>
-    <x-hello>
-            <x-slot name="header">
-                head
-            </x-slot>
-
-            <x-slot name="body">
-                body
-            </x-slot>
-        <div class="bluev">
-            Hello component 
-        </div>
-    </x-hello>
-
-    <a href="{{ route('login') }}">Login</a>
-
-    <x-nav-link href="#">
-        Home
-    </x-nav-link>
+    <div>
+        {{-- @if (auth()->user()->isAdmin())
+           <span>Create project</span>
+        @endif --}}
+        @can('create')
+            <span>create project</span>
+        @endcan
+    </div>
 </x-guest-layout>
