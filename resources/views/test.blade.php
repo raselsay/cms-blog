@@ -1,10 +1,15 @@
 <x-guest-layout>
     <div>
-        {{-- @if (auth()->user()->isAdmin())
-           <span>Create project</span>
-        @endif --}}
         @can('create')
-            <span>create project</span>
+          <span>Create post</span>
+        @endcan
+
+        @can('create')
+          <span>update post</span>
+        @endcan
+        
+        @can('delete')
+          <span>Delete post</span>
         @endcan
     </div>
 </x-guest-layout>

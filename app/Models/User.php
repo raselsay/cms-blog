@@ -32,10 +32,14 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-
-    public function isAdmin()
+    public function roles()
     {
-        return $this->id == 1;
+       return $this->belongsToMany(Role::class)->withTimestamps();
+    }
+
+    public function abilities()
+    {
+        return $this->roles->map->abilities->flatten()->pluck('name')->unique();
     }
 
     /**
