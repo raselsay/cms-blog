@@ -42,6 +42,15 @@ class User extends Authenticatable
         return $this->roles->map->abilities->flatten()->pluck('name')->unique();
     }
 
+    public function assingRole($role)
+    {
+        if(is_string($role)){
+            $roleId =  Role::where('name',$role)->firstOrFail();
+        }
+        
+        $this->roles()->sync($roleId,false);
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

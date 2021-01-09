@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\UserController;
+use App\Models\Role;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +23,9 @@ Route::get('/', function () {
 Route::get('/create/project',function(){
     return view('test');
 })->middleware(['auth']);
+
+
+Route::get('/add/user/{user}/role/{role}',[UserController::class,'createUser'])->name('create.user');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

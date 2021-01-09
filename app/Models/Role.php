@@ -15,4 +15,15 @@ class Role extends Model
         return $this->belongsToMany(Ability::class)->withTimestamps();
     }
 
+
+    public function assingAbility($ability)
+    {
+        if(is_string($ability)){
+
+            $ability =  Ability::where('name',$ability)->firstOrFail();
+        }
+        
+        $this->abilities()->sync($ability,false);
+    }
+
 }
